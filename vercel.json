@@ -1,0 +1,33 @@
+
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "back end/endpoint.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "front end/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/cities(?:\\?.*)?",
+      "dest": "back end/endpoint.js"
+    },
+    {
+      "src": "/reports(?:\\?.*)?",
+      "dest": "back end/endpoint.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "front end/$1"
+    }
+  ],
+  "env": {
+    "SUPABASE_URL": "https://aaegqouodiyrscgljpla.supabase.co",
+    "SUPABASE_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFhZWdxb3VvZGl5cnNjZ2xqcGxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc2MDg4NDQsImV4cCI6MjA2MzE4NDg0NH0.Ta4Zo6Bhxz3tJ8IWy6DBAXdEsRd4WCxffACap26ILAg",
+    "AQICN_TOKEN": "571ea4d2d9cab6f38be24b287f2f0c7a97f61c11"
+  }
+}

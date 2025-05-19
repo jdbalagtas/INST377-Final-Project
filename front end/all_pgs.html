@@ -1,0 +1,100 @@
+<html>
+<head>
+    <title>Air Quality Monitor - INST377 Project - Maya Mistry - Joshua Balagtas</title>
+    <link rel="stylesheet" href="proj.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+    <!-- header -->
+    <header class="header">
+        <div class="header-container">
+            <h1 class="header-title" id="main-title">Global Air Quality Monitor - INST377 Project</h1>
+            <nav class="header-nav">
+                <button class="nav-btn active" data-page="home">Home</button>
+                <button class="nav-btn" data-page="about">About</button>
+                <button class="nav-btn" data-page="city">Cities</button>
+            </nav>
+        </div>
+    </header>
+    <main class="page-container">
+        <!-- home pg -->
+        <section id="home-page" class="page active-page">
+            <div class="dashboard">
+                <div class="map-container">
+                    <div id="map"></div>
+                </div>
+                <h2>Top Cities - Air Quality</h2>
+                <div class="top-cities" id="city-cards"></div>
+            </div>
+        </section>
+        <!-- about pg -->
+        <section id="about-page" class="page">
+            <div class="aqi-info">
+                <h2>Understanding Air Quality Index (AQI)</h2>
+                <div class="aqi-scale">
+                    <div style="background-color: #00d870;">0-50<br>Good</div>
+                    <div style="background-color: #dbdb00;">51-100<br>Moderate</div>
+                    <div style="background-color: #FF7E00;">101-150<br>Unhealthy for Sensitive Groups</div>
+                    <div style="background-color: #FF0000;">151-200<br>Unhealthy</div>
+                    <div style="background-color: #760006;">201-300<br>Very Unhealthy</div>
+                    <div style="background-color: #500b70;">300+<br>Hazardous</div>
+                </div>
+                <p>The Air Quality Index (AQI) is used for reporting daily air quality. Different air quality levels can affect your health.</p>
+                <h3>Health Recommendations Based On Your AQI</h3>
+                <ul>
+                    <li><strong>Good (0-50):</strong> Air quality is satisfactory with little to no risk.</li>
+                    <li><strong>Moderate (51-100):</strong> Acceptable quality, but some pollutants may affect sensitive individuals.</li>
+                    <li><strong>Unhealthy for Sensitive Groups (101-150):</strong> General public not likely affected but sensitive groups may experience health effects.</li>
+                    <li><strong>Unhealthy (151-200):</strong> Everyone may begin to experience health effects.</li>
+                    <li><strong>Very Unhealthy (201-300):</strong> Health alert - everyone may experience more serious health effects.</li>
+                    <li><strong>Hazardous (300+):</strong> Health warnings of emergency conditions.</li>
+                </ul>
+            </div>
+        </section>
+        <!-- city pg -->
+        <section id="city-page" class="page">
+            <div class="city-content">
+                <div class="city-selection">
+                    <h2>Select City</h2>
+                    <select id="city-selector">
+                        <option value="New York">New York</option>
+                        <option value="Los Angeles">Los Angeles</option>
+                        <option value="London">London</option>
+                        <option value="Beijing">Beijing</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Tokyo">Tokyo</option>
+                        <option value="Paris">Paris</option>
+                        <option value="Moscow">Moscow</option>
+                    </select>
+                    <button id="load-city-btn">Load City AQI</button>
+                </div>
+                <div id="city-data-container">
+                    <h2 id="city-title">City Air Quality</h2>
+                    <div class="current-data">
+                        <div class="aqi-display">
+                            <span id="aqi-value">--</span>
+                            <span id="aqi-status">Select a city above</span>
+                        </div>
+                        <div class="pollutant-info">
+                            <p>Dominant Pollutant: <span id="dominant-pol">--</span></p>
+                            <p>Last Updated: <span id="last-updated">--</span></p>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="aqi-chart"></canvas>
+                    </div>
+                    <form id="report-form">
+                        <h3>Report Air Quality in Your City</h3>
+                        <input type="text" id="user-name" placeholder="name..." required>
+                        <textarea id="user-report" placeholder="your observations..." required></textarea>
+                        <button type="submit">Submit Report</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    <script src="proj_app.js"></script>
+    <script src="proj_map.js"></script>
+</body>
+</html>
